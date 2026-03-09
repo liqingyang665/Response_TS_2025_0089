@@ -1,17 +1,18 @@
 % Reviewer 1
 \reviewer
-
 \medskip
+\textcolor{blue}{We sincerely thank Reviewer 1 for the confirmation that several comments from the previous round have been successfully addressed. We appreciate the opportunity to further refine our work and enhance its quality. We have substantially revised the manuscript to address the remaining comments, with detailed point-by-point responses provided below.} 
+
 \noindent \textit{Note: Reviewer 1 in this round was Reviewer 2 in the previous round.}
 \medskip
 
 \begin{revcomment}[1.0]
-	Thanks for the effort to revise the paper. After the revision, the paper has improved significantly. However, there are still some problems raised after the revision that I hope the authors can resolve.
+	Thanks for the effort to revise the paper. After the revision, the paper has improved significantly. However, there are still some problems raised after the revision that I hope the authors can resolve. 
 \end{revcomment}
 
 \hypertarget{Response to R1}{}
 \begin{revresponse}[1.0]
-	We sincerely thank Reviewer 1 for the positive feedback recognizing the significant improvements in our revised manuscript. Below, we address your remaining concerns point by point.
+    Thank you for the time and effort invested in this review. We appreciate the positive feedback regarding the significant improvements in our manuscript. Below, we address your remaining concerns point by point. 
 \end{revresponse}
 
 \begin{revcomment}[1.1]
@@ -19,8 +20,15 @@
 \end{revcomment}
 
 \begin{revresponse}[1.1]
-    We completely agree. To explicitly anchor our work in transportation science operations, we have restructured the manuscript to emphasize domain-specific features such as spatial/temporal restrictions, discrete capacities, and explicit routing logistics. The detailed responses to your specific sub-points are provided below.
+    Thanks for the insightful comment. We completely agree. To explicitly anchor our work in transportation science operations, we have restructured the manuscript to emphasize domain-specific features such as spatial/temporal restrictions, discrete capacities, and explicit routing logistics. The detailed responses to your specific sub-points are provided below. 
 \end{revresponse}
+
+\begin{changes}
+xxx
+\end{changes}
+
+% Language in transportation, model + example
+% We have infused transportation-specific terminology throughout the methodology (e.g., origin-destination (O-D) routing, detour constraints, real-time workload limits) to align the narrative with the domain language natively expected in \textit{Transportation Science}.
 
 \begin{revcomment}[1.1.1]
 	The author replied that ``crowd carriers' route choice, platform's matching/pricing strategy, and the interplay between crowdshipping and dedicated delivery'' are fundamental characteristics in crowdshipping. However, almost all mechanism design problems have matching/pricing strategy and the interplay between agents, which do not make the problem specific to crowdshipping. The only element specific to crowdshipping is the route-choice-based bidding. However, the model (The Winner Determination Problem) does not model the route-choice-based bidding. What all matters is the bundle $s$ in the model. The relationship between bundle and route choice is not clarified.
@@ -31,36 +39,23 @@
 \end{revresponse}
 
 \begin{revcomment}[1.1.2]
-	Is it possible to model the bidding for bundle based on the route choice? The current model looks like to enumerate all possible bundles, each of which corresponds to a route. In another words, all routes are predetermined, so that the platform simply recommends routes to agents for bidding.
+	Is it possible to model the bidding for bundle based on the route choice? The current model looks like to enumerate all possible bundles, each of which corresponds to a route. In another words, all routes are predetermined, so that the platform simply recommends routes to agents for bidding. Is it possible to bid like this way: let the service provider bid for a cost rate per mile for delivery? And model it into the formulas? 
 \end{revcomment}
 
 \begin{revresponse}[1.1.2]
 	Yes. By introducing the PDP model in \textbf{Section 3.2}, the relationship is now explicitly governed by route choice. The agent's bid cost is strictly constrained by their own spatial and temporal physical constraints (e.g., origin/destination node visits, time windows for shipments, and maximum detour limits). The routes are not predetermined; rather, the bundle feasibility and minimum detour time are inherently derived from the operational constraints of the carrier's baseline trip.
-\end{revresponse}
-
-\begin{revcomment}[1.1.3]
-	Is it possible to bid like this way: let the service provider bid for a cost rate per mile for delivery? And model it into the formulas? 
-\end{revcomment}
-
-\begin{revresponse}[1.1.3]
     Regarding a cost-rate-per-mile bid format: while conceptually viable, interpreting everything as a unit rate effectively reduces the model to a single-parameter mechanism which cannot accurately capture the operational heterogeneity—such as varying spare capacities or asymmetric spatial dependencies—of existing routes driven by diverse crowd carriers. 
 \end{revresponse}
 
-\begin{revcomment}[1.1.5]
+\begin{revcomment}[1.1.3]
 	Then, another question. The developed model might also be applied in shared mobility, such as carpooling, right? Any difference for the modeling? 
 \end{revcomment}
 
-\begin{revresponse}[1.1.5]
+\begin{revresponse}[1.1.3]
     Unlike carpooling, freight crowdshipping involves logistics-specific constraints like stringent time windows, parcel pickup/delivery sequencing, and discrete volume constraints. We have emphasized these critical transportation-specific elements in the revised text to firmly differentiate the problem domain.
 \end{revresponse}
 
-\begin{revcomment}[1.1.6]
-	Language in transportation, model + example
-\end{revcomment}
 
-\begin{revresponse}[1.1.6]
-    We have infused transportation-specific terminology throughout the methodology (e.g., origin-destination (O-D) routing, detour constraints, real-time workload limits) to align the narrative with the domain language natively expected in \textit{Transportation Science}.
-\end{revresponse}
 
 \begin{revcomment}[1.2]
 	My second question is about one-to-one vs many-to-many. Based on the authors’ response, I guess that one-to-one means the following: If an agent wins A, his value is 10 dollars. If the agent wins B, his value is 15 dollars. Then if he wins both, then his value is 10+15 = 25 dollars. Many-to-many means if agent wins both, the value is not necessarily 25 dollars. Is my understanding right? If yes, it is incorrect that the author claims ``The auctions may not fully capture the non-additive valuation of order bundling by crowd carriers and often assign orders one by one to crowd carriers.'' Almost all combinatorial auction models do not rely on the assumption of ``additive valuation''. This is not a novel contribution of this paper. 
@@ -72,12 +67,6 @@
 
 \begin{revcomment}[1.3]
 	I raised this question about fair comparison of the proposed mechanism by greedy approach with VCG mechanism. The author claimed that both the proposed mechanism and VCG mechanism targets at minimizing the total cost, which is the negative social welfare. This is understandable. 
-
-	However, when we look at the comparison in Figure 3, we found that the cost of VCG outperforms the greedy mechanism significantly in some cases, such as M =3, N =5: VCG cost is 735 while Greedy cost is 1250. This result is not satisfactory. 
-
-	Although, the author also compares the two mechanisms in terms of profit, fulfillment, utilization rate, etc., none of these metrics is the objective of the designed mechanism. Maybe the author should clarify the objective of the designed mechanism and select a good benchmark for fair comparison. 
-
-	Also, I realized that the authors proved a bound for social welfare, which is very impressive. But can you show the detailed values of these bounds for specific examples, say M =3, N =5: gap between VCG and Greedy is 735 -1250, then what is the upper bound of this gap?
 \end{revcomment}
 
 \begin{revresponse}[1.3]
@@ -86,18 +75,27 @@
     More importantly, to demonstrate the fairness and practical necessity of the Greedy mechanism, we conducted large-scale scalability analyses matching operational densities (up to 1500 carriers/orders), utilizing exact FedEx standard list rates and OSRM geocoded routing data. As shown in the newly added \added{Section 5.1.2} and \added{Section 5.2.4 (pending simulation finalization)}, the exact VCG model is computationally intractable at this scale. Conversely, our Greedy approximation maintains robust costs and sub-second execution, cementing its viability for real-world platforms.
 \end{revresponse}
 
-\begin{revcomment}[1.4]
-	Addressed previous minor questions.
+\begin{revcomment}[1.3.1]
+	However, when we look at the comparison in Figure 3, we found that the cost of VCG outperforms the greedy mechanism significantly in some cases, such as M =3, N =5: VCG cost is 735 while Greedy cost is 1250. This result is not satisfactory. Although, the author also compares the two mechanisms in terms of profit, fulfillment, utilization rate, etc., none of these metrics is the objective of the designed mechanism. Maybe the author should clarify the objective of the designed mechanism and select a good benchmark for fair comparison. 
 \end{revcomment}
 
-\begin{revresponse}[1.4]
-	Thank you for confirming that these comments have been addressed securely.
+\begin{revresponse}[1.3.1]
+	Thanks
 \end{revresponse}
 
-\begin{revcomment}[1.5]
+\begin{revcomment}[1.3.2]
+	Also, I realized that the authors proved a bound for social welfare, which is very impressive. But can you show the detailed values of these bounds for specific examples, say M =3, N =5: gap between VCG and Greedy is 735 -1250, then what is the upper bound of this gap? 
+\end{revcomment}
+
+\begin{revresponse}[1.3.2]
+	Thanks
+\end{revresponse}
+
+
+\begin{revcomment}[1.4]
 	This is minor issue. I suggest putting the numbers in tables so that the comparison is straightforward. 
 \end{revcomment}
 
-\begin{revresponse}[1.5]
+\begin{revresponse}[1.4]
 	We have adopted your suggestion and formalized the comparative numerical parameters directly into concise tables, greatly improving spatial readability.
 \end{revresponse}
