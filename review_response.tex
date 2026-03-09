@@ -1,13 +1,13 @@
 \documentclass[12pt,american]{article}
 \usepackage[T1]{fontenc}
-\usepackage{fourier}
+% \usepackage{fourier}
 \usepackage[hidelinks]{hyperref}
 \usepackage{babel}
 \usepackage[babel]{microtype}
 \usepackage[babel]{csquotes}
-\usepackage[journal={IEEE Transactions on Visualization and Computer Graphics},
-			manuscript={TVCG-2025-X},
-			editor={Dr. Doom}]{reviewresponse}
+\usepackage[journal={Transportation Science},
+			manuscript={TS-2025-0089.R1},
+			editor={Associate Editor}]{reviewresponse}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage[a4paper,total={160mm,245mm},left=25mm,top=25mm]{geometry}
@@ -16,21 +16,27 @@
 \usepackage[shortlabels]{enumitem}
 \newlist{detail}{itemize}{3}
 \setlist[detail, 1]{label=\textbullet,leftmargin=21pt,nosep}
-\usepackage[backend=biber,style=ieee,dashed=false,url=false,isbn=false,defernumbers=true,refsection=section]{biblatex}
+% Add necessary math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
 
-\bibliography{literature.bib}
-
-
-\title{My Awesome Paper Title}
-\author{Donald Duck and Mickey Mouse}
-
+\title{Auction Mechanism Design for Order Allocation and Payment in a Crowdshipping System}
+\author{The Authors}
 
 \begin{document}
 \maketitle
+This response letter includes:
+\begin{itemize}[leftmargin=3em]
+    \item \hyperlink{Response to AE}{Response to Associate Editor} 
+    \item \hyperlink{Response to R1}{Response to Reviewer \#1}
+    \item \hyperlink{Response to R2}{Response to Reviewer \#2}
+\end{itemize}
 
+\newpage
 % Cover Letter
-\input{cover_letter.tex}
-\setcounter{page}{0}
+% \input{cover_letter.tex}
+% \setcounter{page}{0}
 \pagestyle{fancy}
 \fancyfoot[R]{\thepage\ / \pageref{LastPage}}
 \fancyfoot[L]{Response Letter for \manuscript}
@@ -38,6 +44,5 @@
 \input{Reviewers/Meta.tex}
 \input{Reviewers/R1.tex}
 \input{Reviewers/R2.tex}
-\input{Reviewers/R3.tex}
 
 \end{document}

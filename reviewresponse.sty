@@ -108,14 +108,27 @@
 	\begin{tcolorbox}[adjusted title={Summary Comment \arabic{reviewcomment@counter}}, fonttitle={\bfseries}, enhanced jigsaw, colbacktitle={colorcommentframe},arc=0pt,boxrule=0em,opacityframe=0,colback={colorcommentbg}]
 }{\end{tcolorbox}}
 
-\newenvironment{revcomment}[1][]{\refstepcounter{reviewcomment@counter}
-\edef\@currentlabel{Comment \arabic{reviewer@counter}.\arabic{reviewcomment@counter}}
-	\begin{tcolorbox}[adjusted title={Comment \arabic{reviewer@counter}.\arabic{reviewcomment@counter}}, fonttitle={\bfseries}, enhanced jigsaw, colbacktitle={colorcommentframe},arc=0pt,opacityframe=0,boxrule=0em,colback={colorcommentbg},#1]
+\newenvironment{revcomment}[1][]{%
+	\refstepcounter{reviewcomment@counter}%
+	\def\temp{#1}%
+	\ifx\temp\empty
+		\def\thecommentid{\ifnum\value{reviewer@counter}=0 AE\else\arabic{reviewer@counter}.\arabic{reviewcomment@counter}\fi}%
+	\else
+		\def\thecommentid{#1}%
+	\fi
+	\edef\@currentlabel{Comment \thecommentid}%
+	\begin{tcolorbox}[adjusted title={Comment \thecommentid}, fonttitle={\bfseries}, enhanced jigsaw, colbacktitle={colorcommentframe},arc=0pt,opacityframe=0,boxrule=0em,colback={colorcommentbg}]
 }{\end{tcolorbox}}
 
-\newenvironment{revresponse}[1][{Thank you for the comment.}]{%
-\edef\@currentlabel{Response \arabic{reviewer@counter}.\arabic{reviewcomment@counter}}
-	\noindent\textbf{Response \arabic{reviewer@counter}.\arabic{reviewcomment@counter}:} #1\par
+\newenvironment{revresponse}[1][]{%
+	\def\temp{#1}%
+	\ifx\temp\empty
+		\def\theresponseid{\ifnum\value{reviewer@counter}=0 AE\else\arabic{reviewer@counter}.\arabic{reviewcomment@counter}\fi}%
+	\else
+		\def\theresponseid{#1}%
+	\fi
+	\edef\@currentlabel{Response \theresponseid}%
+	\noindent\textbf{Response \theresponseid:} %
 }{\vspace{1em}}
 
 \newenvironment{revmeta}[1][{Thank you for the comment.}]{%
