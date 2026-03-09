@@ -20,18 +20,39 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{xcolor}
+\makeatletter
+\renewenvironment{revresponse}[1][]{%
+	\def\temp{#1}%
+	\ifx\temp\empty
+		\def\theresponseid{\ifnum\value{reviewer@counter}=0 AE\else\arabic{reviewer@counter}.\arabic{reviewcomment@counter}\fi}%
+	\else
+		\def\theresponseid{#1}%
+	\fi
+	\edef\@currentlabel{Response \theresponseid}%
+	\noindent\textbf{Response \theresponseid:} \color{blue}%
+}{\vspace{1em}}
+\makeatother
+
+% Define command for manuscript changes
+\newcommand{\added}[1]{\textcolor{violet}{#1}}
+\newcommand{\revised}[1]{\textcolor{violet}{#1}}
 
 \title{Auction Mechanism Design for Order Allocation and Payment in a Crowdshipping System}
 \author{The Authors}
 
 \begin{document}
 \maketitle
+The authors would like to thank the Associate Editor and reviewers for their useful feedback. Responses to Associate Editor's and reviewers' comments are presented in \textcolor{blue}{blue}, and the main changes made to the manuscript are in \added{violet}. For clarity, labels of tables and figures appearing in this document are self-referred with the prefix R. 
+\vspace{.5em} 
+
 This response letter includes:
 \begin{itemize}[leftmargin=3em]
-    \item \hyperlink{Response to AE}{Response to Associate Editor} 
-    \item \hyperlink{Response to R1}{Response to Reviewer \#1}
-    \item \hyperlink{Response to R2}{Response to Reviewer \#2}
+    \item \hyperlink{Response to AE}{Response to Associate Editor \dotfill {2}} 
+    \item \hyperlink{Response to R1}{Response to Reviewer \#1 \dotfill {3}}
+    \item \hyperlink{Response to R2}{Response to Reviewer \#2 \dotfill {X}}
 \end{itemize}
+
 
 \newpage
 % Cover Letter
@@ -41,7 +62,7 @@ This response letter includes:
 \fancyfoot[R]{\thepage\ / \pageref{LastPage}}
 \fancyfoot[L]{Response Letter for \manuscript}
 \fancyfoot[C]{\ }
-\input{Reviewers/Meta.tex}
+\input{Reviewers/AE.tex}
 \input{Reviewers/R1.tex}
 \input{Reviewers/R2.tex}
 

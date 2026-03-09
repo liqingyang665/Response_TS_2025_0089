@@ -18,7 +18,7 @@
 	My first question is about the domain knowledge in transportation. I think the developed theory might be too generalized. I mean if this paper is submitted to an OR or management science journal, there will be no problem at all. But it is for Transportation Science. In order to fall in the scope of TS, it should have transportation specific domain application.
 \end{revcomment}
 
-\begin{revresponse}[1.1.0]
+\begin{revresponse}[1.1.1]
     We completely agree. To explicitly anchor our work in transportation science operations, we have restructured the manuscript to emphasize domain-specific features such as spatial/temporal restrictions, discrete capacities, and explicit routing logistics. The detailed responses to your specific sub-points are provided below.
 \end{revresponse}
 
@@ -27,7 +27,7 @@
 \end{revcomment}
 
 \begin{revresponse}[1.1.2]
-	We agree that the route-choice process must be explicitly modeled. To address this, we have systematically restructured our methodology. As detailed in the revised \textbf{Section 3.2 (highlighted in \textcolor{purple}{purple})}, we formally introduce a route-specific Pickup and Delivery Problem (PDP) to evaluate bundles. The bidding cost is now explicitly defined as the minimal detour time derived from the PDP, fully anchoring our mechanism in transportation operations.
+	We agree that the route-choice process must be explicitly modeled. To address this, we have systematically restructured our methodology. As detailed in the revised \added{Section 3.2}, we formally introduce a route-specific Pickup and Delivery Problem (PDP) to evaluate bundles. The bidding cost is now explicitly defined as the minimal detour time derived from the PDP, fully anchoring our mechanism in transportation operations.
 \end{revresponse}
 
 \begin{revcomment}[1.1.3]
@@ -83,7 +83,7 @@
 \begin{revresponse}[1.3]
 	The performance gap in small-scale tests ($735$ vs $1250$) represents rare limit cases aligning with our theoretical bounds; detailed calculations verifying this structural compliance have been added. 
 
-    More importantly, to demonstrate the fairness and practical necessity of the Greedy mechanism, we conducted large-scale scalability analyses matching operational densities (up to 1500 carriers/orders), utilizing exact FedEx standard list rates and OSRM geocoded routing data. As shown in the newly added \textbf{Section 5.1.2 (highlighted in \textcolor{purple}{purple})} and \textbf{Section 5.2.4 (highlighted in \textcolor{red}{red} pending simulation finalization)}, the exact VCG model is computationally intractable at this scale. Conversely, our Greedy approximation maintains robust costs and sub-second execution, cementing its viability for real-world platforms.
+    More importantly, to demonstrate the fairness and practical necessity of the Greedy mechanism, we conducted large-scale scalability analyses matching operational densities (up to 1500 carriers/orders), utilizing exact FedEx standard list rates and OSRM geocoded routing data. As shown in the newly added \added{Section 5.1.2} and \added{Section 5.2.4 (pending simulation finalization)}, the exact VCG model is computationally intractable at this scale. Conversely, our Greedy approximation maintains robust costs and sub-second execution, cementing its viability for real-world platforms.
 \end{revresponse}
 
 \begin{revcomment}[1.4]
