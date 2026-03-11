@@ -12,7 +12,11 @@
 
 \hypertarget{Response to R1}{}
 \begin{revresponse}[1.0]
+<<<<<<< Updated upstream
     Thank you for the time and effort invested in this review. We appreciate the positive feedback regarding the significant improvements in our manuscript. Below, we address your remaining concerns point by point. 
+=======
+    Thank you for the time and effort invested in this review. We appreciate the positive feedback regarding the improvements in our manuscript. Below, we address your remaining concerns point by point. 
+>>>>>>> Stashed changes
 \end{revresponse}
 
 \begin{revcomment}[1.1]
@@ -20,7 +24,15 @@
 \end{revcomment}
 
 \begin{revresponse}[1.1]
+<<<<<<< Updated upstream
     Thanks for the insightful comment. We completely agree. To explicitly anchor our work in transportation science operations, we have restructured the manuscript to emphasize domain-specific features such as spatial/temporal restrictions, discrete capacities, and explicit routing logistics. The detailed responses to your specific sub-points are provided below. 
+=======
+    Thanks for the insightful comment. We completely agree. Our objective is to establish a general theoretical framework for the operation of crowdshipping systems. We consider establishing this framework based on auction theory, as auction mechanisms have extensive applications in traditional logistics. However, there are two fundamental features existing in the crowdshipping system that make it different from traditional logistics: (1) each crowd carrier has his/her own route choice (whether performing some crowdshipping task or not), and (2) the availability of dedicated delivery services. Moreover, the computational efficiency matters more in crowdshipping, as travelers usually consider serving as crowd carriers when they are about to travel. 
+
+   Hence, our starting point is to design auction mechanisms for crowdshipping systems that possess sound economic properties and are computationally efficient. Interestingly, we find the connection between the two features and the theories in the auction literature. First, only one route with crowdshipping tasks connecting the origin to the destination can be assigned to a crowd carrier at most (those without feasible tasks will not join the auction). This can be modeled by a mutually exclusive (XOR) bidding language where each bidders can submit multiple bids but at most one bid can be accepted. Second, the availability of dedicated delivery services correponds to the reserve price in auction theory, as it can be seen as an alternative to crowdsourced delivery. Moreover, this affects the feasiblity of the allocation problem, the crowd carrier's bidding behavior, and thus the designed mechanisms.
+   
+    While we believe the fundamental features are captured in the mathematical modeling and designed mechanisms, we acknowledge that the correspondence between the route and bid are omitted, and the domain knowledge in transportation can be further enhanced. Therefore, to explicitly anchor our work in transportation science operations, we have enriched the modeling of bundle generation and bid construction with more specific details in the general framework (See \added{Section 3.2}). To further ground this theoretical framework in practical application, we have also demonstrated the implementation of this theorerical framework with more realistic numerical settings (See \added{Section 5}). The detailed responses to your specific sub-points are provided below. 
+>>>>>>> Stashed changes
 \end{revresponse}
 
 \begin{changes}
