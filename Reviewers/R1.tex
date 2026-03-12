@@ -12,11 +12,7 @@
 
 \hypertarget{Response to R1}{}
 \begin{revresponse}[1.0]
-<<<<<<< Updated upstream
-    Thank you for the time and effort invested in this review. We appreciate the positive feedback regarding the significant improvements in our manuscript. Below, we address your remaining concerns point by point. 
-=======
     Thank you for the time and effort invested in this review. We appreciate the positive feedback regarding the improvements in our manuscript. Below, we address your remaining concerns point by point. 
->>>>>>> Stashed changes
 \end{revresponse}
 
 \begin{revcomment}[1.1]
@@ -24,15 +20,11 @@
 \end{revcomment}
 
 \begin{revresponse}[1.1]
-<<<<<<< Updated upstream
-    Thanks for the insightful comment. We completely agree. To explicitly anchor our work in transportation science operations, we have restructured the manuscript to emphasize domain-specific features such as spatial/temporal restrictions, discrete capacities, and explicit routing logistics. The detailed responses to your specific sub-points are provided below. 
-=======
-    Thanks for the insightful comment. We completely agree. Our objective is to establish a general theoretical framework for the operation of crowdshipping systems. We consider establishing this framework based on auction theory, as auction mechanisms have extensive applications in traditional logistics. However, there are two fundamental features existing in the crowdshipping system that make it different from traditional logistics: (1) each crowd carrier has his/her own route choice (whether performing some crowdshipping task or not), and (2) the availability of dedicated delivery services. Moreover, the computational efficiency matters more in crowdshipping, as travelers usually consider serving as crowd carriers when they are about to travel. 
+    Thanks for the thoughtful comment. We completely agree. Our objective is to establish a general theoretical framework for the operation of crowdshipping systems. We developed this framework based on auction theory, as auction mechanisms have extensive applications in traditional logistics. However, there are two distinct features existing in the crowdshipping system: (1) each crowd carrier has his/her own route choice (whether performing some crowdshipping tasks or not), and (2) the availability of dedicated delivery services. Moreover, the computational efficiency matters more in crowdshipping, as travelers usually consider serving as crowd carriers when they are about to travel. 
 
-   Hence, our starting point is to design auction mechanisms for crowdshipping systems that possess sound economic properties and are computationally efficient. Interestingly, we find the connection between the two features and the theories in the auction literature. First, only one route with crowdshipping tasks connecting the origin to the destination can be assigned to a crowd carrier at most (those without feasible tasks will not join the auction). This can be modeled by a mutually exclusive (XOR) bidding language where each bidders can submit multiple bids but at most one bid can be accepted. Second, the availability of dedicated delivery services correponds to the reserve price in auction theory, as it can be seen as an alternative to crowdsourced delivery. Moreover, this affects the feasiblity of the allocation problem, the crowd carrier's bidding behavior, and thus the designed mechanisms.
-   
-    While we believe the fundamental features are captured in the mathematical modeling and designed mechanisms, we acknowledge that the correspondence between the route and bid are omitted, and the domain knowledge in transportation can be further enhanced. Therefore, to explicitly anchor our work in transportation science operations, we have enriched the modeling of bundle generation and bid construction with more specific details in the general framework (See \added{Section 3.2}). To further ground this theoretical framework in practical application, we have also demonstrated the implementation of this theorerical framework with more realistic numerical settings (See \added{Section 5}). The detailed responses to your specific sub-points are provided below. 
->>>>>>> Stashed changes
+   Hence, our starting point is to design auction mechanisms for crowdshipping systems that possess sound economic properties and are computationally efficient. Interestingly, we find the connection between the two features and the theories in the auction literature. First, only one route with crowdshipping tasks connecting the origin to the destination can be assigned to a crowd carrier at most (those without feasible tasks will not join the auction). This can be modeled by a mutually exclusive (XOR) bidding language where each bidders can submit multiple bids but at most one bid can be accepted. Second, the availability of dedicated delivery services correponds to the reserve price in auction theory, as it can be seen as an alternative to crowdsourced delivery. Moreover, these two features jointly affect the feasiblity of the allocation problem, the crowd carrier's bidding behavior, and thus the designed mechanisms. 
+
+    While we believe the fundamental features are captured in the mathematical modeling and designed mechanisms, we acknowledge that the correspondence between the route and bid are simplified, and the domain knowledge in transportation can be further enhanced. Therefore, to explicitly anchor our work in transportation science operations, we have enriched the modeling of bundle generation and bid construction with more specific details in the general framework (See \added{Section 3.2}). To further ground this theoretical framework in practical application, we have also demonstrated the implementation of this theorerical framework with more realistic numerical settings (See \added{Section 5}). The detailed responses to your specific sub-points are provided below. 
 \end{revresponse}
 
 \begin{changes}
@@ -47,15 +39,49 @@ xxx
 \end{revcomment}
 
 \begin{revresponse}[1.1.1]
-	We agree that the route-choice process must be explicitly modeled. To address this, we have systematically restructured our methodology. As detailed in the revised \added{Section 3.2}, we formally introduce a route-specific Pickup and Delivery Problem (PDP) to evaluate bundles. The bidding cost is now explicitly defined as the minimal detour time derived from the PDP, fully anchoring our mechanism in transportation operations.
+    Thanks for this insightful comment, which touches upon the problem features in the investigated system. As we mentioned before, there are two fundamental elements existing in crowdshipping: (1) crowd carrier's original trip purpose and (2) the availability of dedicated delivery services. Let us elaborate on the specific elements and the interplay within the system in more details. 
+    \begin{itemize}
+        \item Regarding the first element: We use combinatorial auction to capture crowd carriers' preference towards a package of orders, as there exists complementary effects of the orders from the routing behavior. A route means a crowd carrier departs from the origin, passes through a series of pickup and delivery locations for orders, and ultimately arrives at the destination. These routes are inherently mutually exclusive, as travelers will ultimately choose only one. Thus, to incorporate the route choice behavior, we leverage XOR bids where each bid is associated with a route, meaning that a crowd carrier can submit multiple bids but at most one bid can be accepted. In the previous version of manuscript, we assume a correspondence between routes and bids, without explicitly modeling it. 
+        \item Regarding the second element: In the modeling framework, we capture the existence of dedicated delivery service by using a fixed rate for each order (See comment R2.2 and the correponding response in the last round). Hence, the agents are only the crowd carriers. The existence of dedicated delivery services creates the interplay within the system, as it introduces an alternative to crowdshipping. Specifically, the interdependency behaves in the following way: the dedicated delivery services are the backup options to fulfill the orders, which ensures the feasibility of the winner determination problem (i.e., the order allocation problem). If a crowd carrier knows the dedicated delivery services are available, the bidding behavior will further be reshaped when submitting the bids corresponding to the routes. Hence, we must design the auction mechanisms to accomodate all these interactions and devise novel methodologies to analyze the designed mechanisms. 
+    \end{itemize}    
+
+    We believe the framework we proposed is able to capture these two elements existing in crowdshipping. We agree that the correspondence between routes and bids must be explicitly modeled. Therefore, to clarify this relationship, we formally introduce an effective algorithm to generate the feasible bundles for a crowd carrier and identify the corresponding bids. As detailed in \added{Section 3.2} in the revised manuscript, the bidding pricing associated with a bundle is constructed based on the minimal detour time among all routes. Furthermore, we have demonstrated the implementation of this improved framework with more realistic numerical settings (See \added{Section 5}). 
 \end{revresponse}
+
+\begin{changes}
+xxx
+\end{changes}
 
 \begin{revcomment}[1.1.2]
 	Is it possible to model the bidding for bundle based on the route choice? The current model looks like to enumerate all possible bundles, each of which corresponds to a route. In another words, all routes are predetermined, so that the platform simply recommends routes to agents for bidding. Is it possible to bid like this way: let the service provider bid for a cost rate per mile for delivery? And model it into the formulas? 
 \end{revcomment}
 
 \begin{revresponse}[1.1.2]
-	Yes. By introducing the PDP model in \textbf{Section 3.2}, the relationship is now explicitly governed by route choice. The agent's bid cost is strictly constrained by their own spatial and temporal physical constraints (e.g., origin/destination node visits, time windows for shipments, and maximum detour limits). The routes are not predetermined; rather, the bundle feasibility and minimum detour time are inherently derived from the operational constraints of the carrier's baseline trip.
+	Thanks very much for these insightful questions and kind suggestions. You raise a key point about the bidding language and the associated mechanism design problem (i.e., the winner determination problem and the coupled payment rule). In fact, we have considered both two possible ways of bidding when we started to design auction mechanisms for crowdshipping. 
+    
+    
+    We elabotate on each of them below. 
+    The first possibility is to let crowd carriers submit bids for bundles of orders, which is precisely what we have adopted in our paper. The crowd carriers reported their direct routes from his/her origin to his/her destination. 
+    
+    This bidding language corresponds to an indirect mechanism in the mechanism design literature, as crowd carriers do not 
+
+    In the winner determination problem 
+    
+    However, as you mentioned here, in the theoretical part we did not model the contruction of bids explicitly, but rather implicitly assumed the correspondence between a bid for a bundle and a route to serve the orders in the bundle. In the numerical part, we just randomly selected bundles for each crowd carrier to bid and calculated the bidding price based on the detour time of the shortest route compared to direct route (i.e., without serving orders). 
+    
+    In this revision, we explicitly model the bundle generation process and the corresponding bid construction problem for each crowd carrier. Specifically, 
+    
+    The crowd carriers each of which corresponds to a route. 
+        A bundle is idetified by 
+    We explicitly model the bid construction problem by adding 
+    
+    Actually these two ways are equivalent. 
+
+    The second possibility you mentioned is to let the service provider bid for a cost rate per mile for delivery. 
+
+    As we mentioned before, the routes are not predetermined; rather, the bundle feasibility and minimum detour time are inherently derived from the operational constraints of the carrier's baseline trip.
+
+    Yes. By introducing the PDP model in \textbf{Section 3.2}, the relationship is now explicitly governed by route choice. The agent's bid cost is strictly constrained by their own spatial and temporal physical constraints (e.g., origin/destination node visits, time windows for shipments, and maximum detour limits). The routes are not predetermined; rather, the bundle feasibility and minimum detour time are inherently derived from the operational constraints of the carrier's baseline trip.
     Regarding a cost-rate-per-mile bid format: while conceptually viable, interpreting everything as a unit rate effectively reduces the model to a single-parameter mechanism which cannot accurately capture the operational heterogeneity—such as varying spare capacities or asymmetric spatial dependencies—of existing routes driven by diverse crowd carriers. 
 \end{revresponse}
 
@@ -64,13 +90,14 @@ xxx
 \end{revcomment}
 
 \begin{revresponse}[1.1.3]
+    Yes, the general framework of combinatorial auctions can be applied to shared mobility scenarios like carpooling. However, the specific modeling details and constraints differ significantly due to the distinct operational requirements of freight delivery versus passenger transport. 
     Unlike carpooling, freight crowdshipping involves logistics-specific constraints like stringent time windows, parcel pickup/delivery sequencing, and discrete volume constraints. We have emphasized these critical transportation-specific elements in the revised text to firmly differentiate the problem domain.
 \end{revresponse}
 
 
 
 \begin{revcomment}[1.2]
-	My second question is about one-to-one vs many-to-many. Based on the authors’ response, I guess that one-to-one means the following: If an agent wins A, his value is 10 dollars. If the agent wins B, his value is 15 dollars. Then if he wins both, then his value is 10+15 = 25 dollars. Many-to-many means if agent wins both, the value is not necessarily 25 dollars. Is my understanding right? If yes, it is incorrect that the author claims ``The auctions may not fully capture the non-additive valuation of order bundling by crowd carriers and often assign orders one by one to crowd carriers.'' Almost all combinatorial auction models do not rely on the assumption of ``additive valuation''. This is not a novel contribution of this paper. 
+	My second question is about one-to-one vs many-to-many. Based on the authors' response, I guess that one-to-one means the following: If an agent wins A, his value is 10 dollars. If the agent wins B, his value is 15 dollars. Then if he wins both, then his value is 10+15 = 25 dollars. Many-to-many means if agent wins both, the value is not necessarily 25 dollars. Is my understanding right? If yes, it is incorrect that the author claims ``The auctions may not fully capture the non-additive valuation of order bundling by crowd carriers and often assign orders one by one to crowd carriers.'' Almost all combinatorial auction models do not rely on the assumption of ``additive valuation''. This is not a novel contribution of this paper. 
 \end{revcomment}
 
 \begin{revresponse}[1.2]
